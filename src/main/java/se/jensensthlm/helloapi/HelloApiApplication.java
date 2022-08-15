@@ -12,3 +12,10 @@ public class HelloApiApplication {
         SpringApplication.run(HelloApiApplication.class, args);
     }
 }
+
+
+// GET api/v1/exchange-rate
+// GET api/v1/products
+// GET api/v1/products/123
+
+// GET localhost:8080
