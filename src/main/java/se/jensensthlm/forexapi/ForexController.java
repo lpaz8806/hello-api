@@ -10,7 +10,7 @@ public class ForexController {
     // implement here the exchange endpoint
     // feel free to use the convention you want
     // e.g.
-    
+
     // api/v1/exchange-rate/usd/sek
 
     // api/v1/exchange-rate
