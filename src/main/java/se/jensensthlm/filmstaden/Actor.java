@@ -1,4 +1,4 @@
 package se.jensensthlm.filmstaden;
 
-public record Actor(long id, String first_name, String last_name, String gender, String born_on) {
+public record Actor(long id, String firstName, String lastName, String gender, String bornOn) {
 }

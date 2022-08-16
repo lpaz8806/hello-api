@@ -15,12 +15,14 @@ public class ActorsRepository extends RepositoryBase {
 
     public Actor getById(long id) throws SQLException {
         var rs = executeQuery("SELECT * FROM actors WHERE id = %s", id);
-        return new Actor(
-                rs.getLong("id"),
-                rs.getString("first_name"),
-                rs.getString("last_name"),
-                rs.getString("gender"),
-                rs.getString("born_on")
-        );
+        if(rs.next())
+            return new Actor(
+                    rs.getLong("id"),
+                    rs.getString("first_name"),
+                    rs.getString("last_name"),
+                    rs.getString("gender"),
+                    rs.getString("born_on")
+            );
+        return null;
     }
 }

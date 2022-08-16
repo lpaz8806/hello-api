@@ -29,7 +29,9 @@ public class ActorsController {
     public ResponseEntity<ActorOutDto> getById(@PathVariable long id) {
         try {
             var actor = mapActor(actorsRepository.getById(id));
-            return ResponseEntity.ok().body(actor);
+            return actor != null
+                    ? ResponseEntity.ok().body(actor)
+                    : ResponseEntity.notFound().build();
         } catch (SQLException e) {
             return ResponseEntity.internalServerError().body(null);
         }
@@ -38,8 +40,8 @@ public class ActorsController {
     private ActorOutDto mapActor(Actor actor) {
         return new ActorOutDto(
                 actor.id(),
-                "%s %s".formatted(actor.first_name(), actor.last_name()),
-                actor.born_on()
+                "%s %s".formatted(actor.firstName(), actor.lastName()),
+                actor.bornOn()
         );
     }
     private List<ActorOutDto> mapActors(List<Actor> actors) {

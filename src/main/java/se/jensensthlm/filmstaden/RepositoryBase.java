@@ -13,8 +13,8 @@ public abstract class RepositoryBase {
         try {
             db = DriverManager.getConnection(
                     "jdbc:mariadb://localhost:3306/filmstaden",
-                    "root",
-                    ""
+                    "pepe",
+                    "pepe"
             );
             return db;
         }
@@ -24,7 +24,8 @@ public abstract class RepositoryBase {
     }
 
     protected ResultSet executeQuery(String query, Object... params) throws SQLException {
-        Statement stmt = conn().createStatement();
+        var c = conn();
+        Statement stmt = c.createStatement();
         return stmt.executeQuery(String.format(query, params));
     }
 }
