@@ -28,10 +28,11 @@ public class ActorsController {
     @GetMapping("{id}")
     public ResponseEntity<ActorOutDto> getById(@PathVariable long id) {
         try {
-            var actor = mapActor(actorsRepository.getById(id));
-            return actor != null
-                    ? ResponseEntity.ok().body(actor)
-                    : ResponseEntity.notFound().build();
+            var actor = actorsRepository.getById(id);
+            if(actor == null)
+                return ResponseEntity.notFound().build();
+            var actorDto = mapActor(actor);
+            return ResponseEntity.ok().body(actorDto);
         } catch (SQLException e) {
             return ResponseEntity.internalServerError().body(null);
         }
